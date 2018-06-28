@@ -1,22 +1,52 @@
+{% load staticfiles %}
 <html>
 <head>
-    <title>Sandra blog</title>
+    <div class="page-header">
+        <h1><a href="/">Code Lady Blog</a></h1>
+    </div>
+
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+    <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
 </head>
-<body>
-<div>
-    <h1><a href="">Sandra Blog</a></h1>
+<body style="padding-left: 15px;color: #FCA205;
+    ">
+{{ posts }}
+<div class="page-header">
+    <h1 style="color: #FCA205; font-family: 'Lobster'"><a href="/">Postagens do Blog</a></h1>
+
+    <h2 style="color: #FCA205; font-family: 'Lobster'">Lógica de programação</h2>
+    <h3><p style="text-align: justify; font-family: 'Times New Roman'"> <h4>Lógica é a ordenação do pensamento, por que nossa razão pode funcionar desordenadamente. Por isso precisamos de uma ciência das formas de pensamentos.<br>
+
+       Exemplo: Todo mamífero é um animal. Todo cavalo é mamífero. Portanto, todo cavalo é um animal.<br>
+
+        O raciocício lógico pode ser expressado de várias formas, nas várias linguas existentes no planeta e todos estarem corretos; a lógica de programação existe para representar com fidelidade este raciocínio, através dos Algorítmos.<br>
+
+        <br>Eu e você recebemos a instrução: “faça um bolo para o seu namorado.” Você pode pensar da seguinte forma: <br>passo 1: Saber qual sabor ele gosta <br>passo 2: Comprar os ingredientes <br>Passo 3: Fazer o bolo
+        <br>Já eu poderia pensar: <br>passo 1: aprender a fazer bolo <br>passo 2: descobrir qual sabor ele gosta <br>passo 3: Comprar os ingredientes <br>passo 4: ingredientes estão acima do orçamento <br>passo 5: cancelar o bolo
+
+        <br><br>Algorítmos são simplesmente uma sequência de passos para atingir um objetivo. Ou seja o raciocínio lógico organizado em passos claros, com intúito, início, tempo de execução e finalização bem definidos, garantem que sempre que for executado, trará os mesmos resultados.
+
+        <br>Se Matheus estuda Banco de Dados, então Rodolpho estuda Cobol. Se Camilla estuda Design, então José estuda Medicina. ORA, Matheus estuda Banco de Dados ou Camilla estuda Design. Logo, podemos afirmar que?
+        <br>A- Rodolpho estuda Cobol ou José estuda Medicina <br>B- Se Matheus não estuda Banco de Dados, então José não estuda Medicina <br>C- Carla estuda Design e Rodolpho estuda Cobol <br>D- Rodolpho estuda Cobol ou Carla não estuda Design
+
+        <br><br><h4>Sua tarefa é raciocinar a lógica para o desafio acima, em breve postarei a resposta!</h4></h4></p></h3>
+    <br>Até mais!!<br>
+
+    Note: Este blog está em desenvolvimento e totalmente construído em Python, segundo o tutorial Django Girls
 </div>
 
-<div>
-    <p>published: 14.06.2014, 12:14</p>
-    <h2><a href="">My first post</a></h2>
-    <p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-</div>
+{% for post in posts %}
 
-<div>
-    <p>published: 14.06.2014, 12:14</p>
-    <h2><a href="">My second post</a></h2>
-    <p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut f.</p>
+<div class="post">
+    <div class="date">
+        {{ post.published_date }}
+    </div>
+    <h1><a href="">{{ post.title }}</a></h1>
+    <p>{{ post.text|linebreaksbr }}</p>
 </div>
-</body>
+{% endfor %}
+
 </html>

@@ -1,3 +1,11 @@
+h1 a {
+    color: #FCA205;
+    font-family: 'Lobster';
+}
+body {
+    padding-left: 15px;
+}
+
 .page-header {
     background-color: #ff9400;
     margin-top: 0;
@@ -44,15 +52,3 @@ h1, h2, h3, h4 {
 .post h1 a, .post h1 a:visited {
     color: #000000;
 }
-
-Então envolva o código HTML que exibe as mensagens com declarações de classes. Substitua isto:
-
-blog/templates/blog/post_list.html
-
-{% for post in posts %}
-    <div class="post">
-        <p>published: {{ post.published_date }}</p>
-        <h1><a href="">{{ post.title }}</a></h1>
-        <p>{{ post.text|linebreaksbr }}</p>
-    </div>
-{% endfor %}
