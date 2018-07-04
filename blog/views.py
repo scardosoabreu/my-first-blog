@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.utils import timezone
-
 from .models import Post
 from .forms import PostForm
+from django.shortcuts import redirect
 
 # Create your views here.
 def post_list(request):
@@ -12,6 +12,8 @@ def post_list(request):
     return render(request, 'blog/post_list.html', {'posts': posts})
 
 def post_new(request):
+    form = PostForm()
+    return render(request, 'blog/post_edit.html', {'form': form})
     if request.method == "POST":
         form = PostForm(request.POST)
         if form.is_valid():
